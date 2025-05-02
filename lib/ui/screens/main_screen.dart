@@ -13,7 +13,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
 
-  final List<Widget> _pages = [const HomeScreen(), const HistoryScreen(), const SettingsScreen()];
+  final List<Widget> _pages = [const WeatherScreen(), const HistoryScreen(), const SettingsScreen()];
 
   void _onTabTapped(int index) {
     setState(() {
@@ -28,6 +28,7 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: _onTabTapped,
+        //backgroundColor: Colors.transparent,
         iconSize: 28,
         items: const [
           BottomNavigationBarItem(
