@@ -28,6 +28,8 @@ class CurrentWeatherModel {
     required this.name,
     required this.cod,
   });
+
+  static fromJson(data) {}
 }
 
 class Clouds {

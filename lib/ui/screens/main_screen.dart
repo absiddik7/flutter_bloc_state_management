@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc_practice/ui/screens/wallet/wallet_screen.dart';
-import 'package:flutter_bloc_practice/ui/screens/weather/weather_screen.dart';
+import 'package:flutter_bloc_practice/ui/screens/weather/screens/weather_screen.dart';
 import 'package:flutter_bloc_practice/ui/screens/settings/settings_screen.dart';
 
 class MainScreen extends StatefulWidget {
