@@ -9,7 +9,7 @@ class WeatherScreen extends StatelessWidget {
     const cityName = "Zocca, IT";
     const temperature = 285.68;
     const feelsLike = 284.87;
-    const weatherMain = "Clear";
+    //const weatherMain = "Clear";
     const weatherDescription = "clear sky";
     const humidity = 72; // %
     const sunrise = 1746158722;
