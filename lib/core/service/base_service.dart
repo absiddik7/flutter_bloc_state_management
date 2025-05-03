@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_bloc_practice/core/env.dart';
 
 class BaseService {
   late final Dio _dio;
@@ -7,7 +7,7 @@ class BaseService {
   BaseService() {
     _dio = Dio(
       BaseOptions(
-        baseUrl: dotenv.env['BASE_URL'] ?? '',
+        baseUrl: baseUrl,
         connectTimeout: const Duration(seconds: 10),
         receiveTimeout: const Duration(seconds: 10),
       ),
@@ -16,7 +16,6 @@ class BaseService {
 
   Future<Response> get(String endpoint, {Map<String, dynamic>? params}) async {
     try {
-      final apiKey = dotenv.env['API_KEY'];
       final fullParams = {
         ...?params,
         'appid': apiKey,

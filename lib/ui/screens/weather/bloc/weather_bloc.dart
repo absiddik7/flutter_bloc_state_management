@@ -1,24 +1,26 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc_practice/core/model/current_weather_model.dart';
 import 'package:flutter_bloc_practice/core/service/weather_service.dart';
-import 'package:flutter_bloc_practice/ui/screens/weather/bloc/weather_event.dart';
-import 'package:flutter_bloc_practice/ui/screens/weather/bloc/weather_state.dart';
+
+part 'weather_event.dart';
+part 'weather_state.dart';
 
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   final WeatherService weatherService;
 
   WeatherBloc(this.weatherService) : super(WeatherInitial()) {
-    on<FetchWeather>(_onFetchWeather);
+    on<FetchCurrentWeather>(_fetchCurrentWeather);
   }
 
-  Future<void> _onFetchWeather(FetchWeather event, Emitter<WeatherState> emit) async {
+  Future<void> _fetchCurrentWeather(FetchCurrentWeather event, Emitter<WeatherState> emit) async {
     emit(WeatherLoading());
+
     try {
-      final response = await weatherService.get('/weather', params: {'q': event.cityName});
-      final weather = CurrentWeatherModel.fromJson(response.data);
-      emit(WeatherLoaded(weather));
+      final currentWeather = await weatherService.getWeatherByCity(event.cityName);
+      emit(WeatherLoaded(currentWeather));
     } catch (e) {
-      emit(WeatherError('Failed to fetch weather: $e'));
+      emit(const WeatherError('Failed to fetch weather data'));
     }
   }
 }
