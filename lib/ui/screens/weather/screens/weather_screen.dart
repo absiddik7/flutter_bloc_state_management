@@ -10,19 +10,6 @@ class WeatherScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<WeatherBloc>().add(const FetchCurrentWeather('Dhaka'));
-    // const cityName = "Zocca, IT";
-    // const temperature = 285.68;
-    // const feelsLike = 284.87;
-    // const weatherDescription = "clear sky";
-    // const humidity = 72;
-    // const sunrise = 1746158722;
-    // const sunset = 1746210031;
-
-    // final tempCelsius = (temperature - 273.15).toStringAsFixed(1);
-    // final feelsLikeCelsius = (feelsLike - 273.15).toStringAsFixed(1);
-
-    // final sunriseTime = _formatUnixTime(sunrise, context);
-    // final sunsetTime = _formatUnixTime(sunset, context);
 
     final forecastData = _generateForecast();
 
@@ -56,7 +43,7 @@ class WeatherScreen extends StatelessWidget {
                       style: const TextStyle(color: Colors.red, fontSize: 18),
                     ),
                   );
-                } else if (state is WeatherLoaded) {
+                } else if (state is CurrentWeatherLoaded) {
                   final cityName = state.currentWeather.name;
                   final weatherDescription = state.currentWeather.weather[0].description;
                   final tempCelsius = (state.currentWeather.main.temp - 273.15).toStringAsFixed(1);

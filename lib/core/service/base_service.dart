@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_bloc_practice/core/api_key.dart';
 import 'package:flutter_bloc_practice/core/env.dart';
 
 class BaseService {
